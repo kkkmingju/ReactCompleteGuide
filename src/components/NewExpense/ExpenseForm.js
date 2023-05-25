@@ -66,7 +66,7 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate), // 내장 날짜 생성자.
     };
     console.log(expenseData);

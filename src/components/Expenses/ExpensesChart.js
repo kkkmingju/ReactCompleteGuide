@@ -2,7 +2,7 @@ import React from "react";
 import Chart from "../Chart/Chart";
 
 const ExpensesChart = (props) => {
-  const chartDataPoint = [
+  const chartDataPoints = [
     { label: "Jan", value: 0 },
     { label: "Feb", value: 0 },
     { label: "Mar", value: 0 },
@@ -17,8 +17,14 @@ const ExpensesChart = (props) => {
     { label: "Dec", value: 0 },
   ];
 
-  for (const expense in props.expenses)
-    return <Chart dataPoints={chartDataPoint} />;
+  for (const expense of props.expenses) {
+    //
+    const expenseMonth = expense.date.getMonth(); // 0 = Jan
+    console.log(expenseMonth);
+
+    chartDataPoints[expenseMonth].value += expense.amount; //특정 달의 값을 증가시킴
+  }
+  return <Chart dataPoints={chartDataPoints} />;
 };
 
 export default ExpensesChart;
